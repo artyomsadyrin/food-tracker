@@ -3,7 +3,7 @@
 //  FoodTracker
 //
 //  Created by Artsiom Sadyryn on 12/28/17.
-//  Copyright © 2017 Apple Inc. All rights reserved.
+//  Copyright © 2017 Artsiom Sadyryn. All rights reserved.
 //
 
 import UIKit

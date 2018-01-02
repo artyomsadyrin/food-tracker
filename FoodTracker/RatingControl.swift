@@ -3,7 +3,7 @@
 //  FoodTracker
 //
 //  Created by Artsiom Sadyryn on 1/1/18.
-//  Copyright © 2018 Apple Inc. All rights reserved.
+//  Copyright © 2018 Artsiom Sadyryn. All rights reserved.
 //
 
 import UIKit
@@ -41,7 +41,7 @@ import UIKit
     
     //MARK: Button Action
     
-    func ratingButtonTapped(button: UIButton) {
+    @objc func ratingButtonTapped(button: UIButton) {
         print("Button pressed 👍")
     }
     
@@ -49,17 +49,28 @@ import UIKit
     
     private func setupButtons() {
         
-        // clear any existing buttons
+        // Clear any existing buttons
         for button in ratingButtons {
             removeArrangedSubview(button)
             button.removeFromSuperview()
         }
         ratingButtons.removeAll()
         
+        // Load Button Images
+        let bundle = Bundle(for: type(of: self))
+        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+        let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+        let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+        
         for _ in 0..<starCount {
             // Create the button
             let button = UIButton()
-            button.backgroundColor = UIColor.red
+            
+            // Set the button images
+            button.setImage(emptyStar, for: .normal)
+            button.setImage(filledStar, for: .selected)
+            button.setImage(highlightedStar, for: .highlighted)
+            button.setImage(highlightedStar, for: [.highlighted, .selected])
             
             // Add constraints
             button.translatesAutoresizingMaskIntoConstraints = false
